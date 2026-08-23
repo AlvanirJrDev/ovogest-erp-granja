@@ -1,0 +1,68 @@
+services:
+  app:
+    build: .
+    container_name: granja-app
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: granja-nginx
+    ports:
+      - "${APP_PORT:-8000}:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: granja-postgres
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-granja}
+      POSTGRES_USER: ${DB_USERNAME:-granja}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+    ports:
+      - "${DB_PORT_EXTERNO:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-granja} -d ${DB_DATABASE:-granja}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  queue:
+    build: .
+    container_name: granja-queue
+    command: php artisan queue:work --tries=3 --sleep=3
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  scheduler:
+    build: .
+    container_name: granja-scheduler
+    command: php artisan schedule:work
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: granja-mailpit
+    ports:
+      - "${MAILPIT_PORT:-8025}:8025"
+
+volumes:
+  pgdata:

@@ -1,0 +1,155 @@
+/* ==========================================================================
+   OvoGest — refinamentos visuais sobre o Filament
+   Carregado em todos os painéis via FilamentAsset (sem build de front).
+   ========================================================================== */
+
+/* Sidebar: separação sutil e marca mais presente */
+.fi-sidebar {
+    border-right: 1px solid rgb(226 232 240 / 0.7);
+}
+
+.dark .fi-sidebar {
+    border-right-color: rgb(51 65 85 / 0.5);
+}
+
+.fi-sidebar-header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Topbar com leve vidro fosco */
+.fi-topbar nav {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgb(226 232 240 / 0.7);
+}
+
+.dark .fi-topbar nav {
+    border-bottom-color: rgb(51 65 85 / 0.5);
+}
+
+/* Cartões, seções e tabelas: cantos mais generosos e sombra suave */
+.fi-section,
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-fo-tabs,
+.fi-wi-chart {
+    border-radius: 0.875rem;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px rgb(15 23 42 / 0.04);
+}
+
+.dark .fi-section,
+.dark .fi-ta-ctn,
+.dark .fi-wi-stats-overview-stat,
+.dark .fi-wi-chart {
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+
+/* Botões levemente mais arredondados */
+.fi-btn {
+    border-radius: 0.55rem;
+}
+
+/* Cabeçalho de tabela em caixa alta discreta (aparência de relatório) */
+.fi-ta-header-cell-label {
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: rgb(100 116 139);
+}
+
+.dark .fi-ta-header-cell-label {
+    color: rgb(148 163 184);
+}
+
+/* Título das páginas com mais respiro */
+.fi-header-heading {
+    letter-spacing: -0.02em;
+}
+
+/* Login: fundo com identidade e cartão em destaque */
+.fi-simple-layout {
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgb(245 158 11 / 0.10), transparent),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgb(245 158 11 / 0.08), transparent),
+        linear-gradient(160deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.dark .fi-simple-layout {
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgb(245 158 11 / 0.12), transparent),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgb(217 119 6 / 0.10), transparent),
+        linear-gradient(160deg, #0b1120 0%, #0f172a 100%);
+}
+
+.fi-simple-main {
+    border-radius: 1.1rem;
+    border-top: 4px solid #f59e0b;
+    box-shadow: 0 10px 40px rgb(15 23 42 / 0.14);
+}
+
+.dark .fi-simple-main {
+    box-shadow: 0 10px 40px rgb(0 0 0 / 0.55);
+}
+
+/* ==========================================================================
+   Rodapé institucional — OvoGest / AJR Software
+   ========================================================================== */
+
+.ovogest-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding: 1rem 0 0.25rem;
+    border-top: 1px solid rgb(226 232 240 / 0.7);
+    font-size: 0.75rem;
+    color: rgb(100 116 139);
+}
+
+.dark .ovogest-footer {
+    border-top-color: rgb(51 65 85 / 0.5);
+    color: rgb(148 163 184);
+}
+
+.ovogest-footer-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.ovogest-footer-selo svg {
+    flex-shrink: 0;
+}
+
+.ovogest-footer-selo strong {
+    color: rgb(51 65 85);
+    font-weight: 600;
+}
+
+.dark .ovogest-footer-selo strong {
+    color: rgb(203 213 225);
+}
+
+/* Badge do perfil logado na barra superior */
+.ovogest-perfil {
+    display: inline-flex;
+    align-items: center;
+    background: rgb(245 158 11 / 0.15);
+    color: rgb(180 83 9);
+    border: 1px solid rgb(245 158 11 / 0.35);
+    border-radius: 9999px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-right: 0.35rem;
+    white-space: nowrap;
+}
+
+.dark .ovogest-perfil {
+    background: rgb(245 158 11 / 0.12);
+    color: rgb(252 211 77);
+    border-color: rgb(245 158 11 / 0.3);
+}
