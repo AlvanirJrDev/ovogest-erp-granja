@@ -134,3 +134,7 @@ Segurança adicional: senhas novas exigem 8+ caracteres com letras e números, e
 - Tabela de preços negociada por cliente (campo `tabela_preco_id` já reservado no cadastro)
 - Alerta automático de vendas vencidas (o vencimento é registrado e aparece nos relatórios; a notificação de atraso é evolução futura)
 - Cancelamento de carga/retorno fechados (vendas já têm cancelamento rastreável)
+
+## Licença
+
+MIT — veja [LICENSE](LICENSE).
